@@ -1,0 +1,50 @@
+ as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+
+full_health_data = pd.read_csv("data.csv", header=0, sep=",")
+
+x = full_health_data["Average_Pulse"]
+y = full_health_data["Calorie_Burnage"]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+def myfunc(x):
+ return slope * x + intercept
+
+mymodel = list(map(myfunc, x))
+
+
+
+<?php
+$file = fopen("test.txt","w");
+echo fwrite($file,"Hello World. Testing!");
+fclose($file);
+
+unlink("test.txt");
+?>
+plt.scatter(x, y)
+plt.plot(x, mymodel)
+plt.ylim(ymin=0, ymax=2000)
+plt.xlim(xmin=0, xmax=200)
+plt.xlabel("Average_Pulse")
+plt.ylabel ("Calorie_Burnage")
+plt.show()
+
+
+<ref>[http://irfanjalil62@gmail.co irfanjalil62@gmail.co]</ref>=={{anchor|HARDWARE}}Examples of hardware caches==
+===CPU cache===
+{{Main|CPU cache}}
+Small memories on or close to the CPU can operate faster than the much larger [[main memory]].<ref>{{Cite journal|last1=Su|first1=Chao|last2=Zeng|first2=Qingkai|date=2021-06-10|editor-last=Nicopolitidis|editor-first=Petros|title=Survey of CPU Cache-Based Side-Channel Attacks: Systematic Analysis, Security Models, and Countermeasures|journal=Security and Communication Networks|language=en|volume=2021|pages=1–15|doi=10.1155/2021/5559552|issn=1939-0122|doi-access=free}}</ref> Most CPUs since the 1980s have used one or more caches, sometimes [[CPU cache#Multi-level caches|in cascaded levels]]; modern high-end [[Embedded computing|embedded]], [[Desktop computer|desktop]] and server [[microprocessor]]s may have as many as six types of cache (between levels and functions).<ref>{{cite web|title=Intel Broadwell Core i7 5775C '128MB L4 Cache' Gaming Behemoth and Skylake Core i7 6700K Flagship Processors Finally Available In Retail|date=25 September 2015|url=https://wccftech.com/intel-broadwell-core-i7-5775c-128mb-l4-cache-and-skylake-core-i7-6700k-flagship-processors-available-retail/}}Mentions L4 cache. Combined with separate I-Cache and TLB, this brings the total 'number of caches (levels+functions) to 6.</ref> Some examples of caches with a specific function are the [[D-cache]], [[I-cache]] and the [[translation lookaside buffer]] for the [[memory management unit]] (MMU).
+
+==={{Anchor|GPU}}GPU cache===
+Earlier [[graphics processing unit]]s (GPUs) often had limited read-only [[texture cache]]s, and introduced [[Morton order]] [[swizzled texture]]s to improve 2D [[cache coherency]]. [[Cache miss]]es would drastically affect performance, e.g. if [[mipmapping]] was not used. Caching was important to leverage 32-bit (and wider) transfers for texture data that was often as little as 4&nbsp;bits per pixel, indexed in complex patterns by arbitrary [[UV coordinates]] and [[perspective transformation]]s in [[inverse texture mapping]].
+
+As GPUs advanced (especially with [[GPGPU|General Purpose GPU]] [[compute shader]]s) they have developed progressively larger and increasingly general caches, including [[instruction cache]]s for [[shader]]s, exhibiting increasingly common functionality with CPU caches. For example, [[GeForce 200 series|GT200]] architecture GPUs did not feature an L2 cache, while the GTX 490 GPU has 768&nbsp;KB of last-level cache, the GTX TITAN GPU has 1536&nbsp;KB of last-level cache, and the GTX 980 GPU has 2048&nbsp;KB of last-level cache. These caches have grown to handle [[synchronisation primitive]]s between threads and [[atomic operation]]s, and interface with a CPU-style MMU.
+
+===DSPs===
+[[Digital signal processor]]s have similarly generalised over the years. Earlier designs used [[scratchpad memory]] fed by [[direct memory access]], but modern DSPs such as [[Qualcomm Hexagon]] often include a very similar set of caches to a CPU (e.g. [[Modified Harvard architecture]] with shared L2, split L1 I-cache and D-cache).<ref>{{cite web|title=qualcom Hexagon DSP SDK overview|url=https://developer.qualcomm.com/software/hexagon-dsp-sdk/dsp-processor}}</ref>
+
+===Translation lookaside buffer===
+{{Main|Translation lookaside buffer}}
+A memory management unit (MMU) that fetches page table entries from main memory has a specialized cache, used for recording the results of [[virtual address]] to [[physical address]] translations. This specialized cache is called a translation lookaside buffer (TLB).<ref>{{cite web|url=http://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf|title=Lecture 7: Memory Management|work=CSE 120: Principles of Operating Systems|year=2009|access-date=2013-12-04|author=Frank Uyeda|publisher=UC San Diego}}</ref>
